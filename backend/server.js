@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors({
-    origin: 'https://trafficlogger-1.onrender.com', 
+    origin: 'https://traffic-logger-one.vercel.app', 
 }));
 app.use(express.json());
 
