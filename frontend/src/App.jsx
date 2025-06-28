@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DataTable from 'react-data-table-component';
 import { createTheme } from 'react-data-table-component'; import "./App.css";
+
 
 function App() {
   const [logs, setLogs] = useState([]);
@@ -12,7 +13,7 @@ function App() {
   const [endDate, setEndDate] = useState(null);
   const [location, setLocation] = useState("");
 
-  url = "https://trafficlogger-1.onrender.com/api/"
+  const BASE_URL = "https://trafficlogger-1.onrender.com/api/"
 
   const [summary, setSummary] = useState({
     total: 0,
@@ -20,9 +21,9 @@ function App() {
     byLocation: {},
   });
 
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     try {
-      let url = url;
+      let url = BASE_URL;
       const params = new URLSearchParams();
 
       if (vehicleType) params.append("type", vehicleType);
@@ -43,12 +44,13 @@ function App() {
     } catch (err) {
       console.error("Failed to fetch logs:", err);
     }
-  };
+  }, [vehicleType, location, startDate, endDate]);
 
   const [locations, setLocations] = useState([]);
 
   const fetchLocations = async () => {
     try {
+      const url = BASE_URL;
       const res = await axios.get(`${url}locations`);
       setLocations(res.data);
     } catch (err) {
@@ -59,7 +61,7 @@ function App() {
   useEffect(() => {
     fetchLogs();
     fetchLocations();
-  }, []);
+  }, [fetchLogs]);
 
 
   const computeSummary = (data) => {
@@ -78,7 +80,7 @@ function App() {
 
   useEffect(() => {
     fetchLogs();
-  }, []);
+  }, [fetchLogs]);
 
   const columns = [
     {
@@ -133,10 +135,11 @@ function App() {
 
         <select value={location} onChange={(e) => setLocation(e.target.value)}>
           <option value="">All Locations</option>
-          <option value="Location A">Location A</option>
-          <option value="Location B">Location B</option>
-          {/* Add more if needed */}
+          {locations.map((loc, index) => (
+            <option key={index} value={loc}>{loc}</option>
+          ))}
         </select>
+
 
         <DatePicker
           selected={startDate}
