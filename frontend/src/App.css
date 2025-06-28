@@ -1,0 +1,123 @@
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef1f6;
+  margin: 0;
+  padding: 0;
+  color: #2b2b2b;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.filters select,
+.filters input,
+.filters .react-datepicker-wrapper input,
+.filters button {
+  padding: 10px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.filters select:focus,
+.filters input:focus,
+.filters .react-datepicker-wrapper input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.filters button {
+  background: linear-gradient(135deg, #007bff, #0061d1);
+  color: #ffffff;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filters button:hover {
+  background: linear-gradient(135deg, #0056b3, #0041a3);
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  font-size: 15px;
+}
+
+.log-table th,
+.log-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+.log-table th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #333;
+}
+
+.log-table tr:hover {
+  background-color: #f9fbff;
+}
+
+.summary {
+  background: linear-gradient(to right, #f0f4ff, #ffffff);
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.summary h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #1e2a3a;
+}
+
+.summary ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.summary ul li {
+  margin: 4px 0;
+  padding-left: 10px;
+  position: relative;
+}
+
+.summary ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #007bff;
+}
