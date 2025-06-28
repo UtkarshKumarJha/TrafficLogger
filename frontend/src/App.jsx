@@ -3,7 +3,7 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DataTable from 'react-data-table-component';
-import { createTheme } from 'react-data-table-component';import "./App.css";
+import { createTheme } from 'react-data-table-component'; import "./App.css";
 
 function App() {
   const [logs, setLogs] = useState([]);
@@ -11,6 +11,8 @@ function App() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [location, setLocation] = useState("");
+
+  url = "https://trafficlogger-1.onrender.com/api/"
 
   const [summary, setSummary] = useState({
     total: 0,
@@ -20,7 +22,7 @@ function App() {
 
   const fetchLogs = async () => {
     try {
-      let url = "http://localhost:5000/api/";
+      let url = url;
       const params = new URLSearchParams();
 
       if (vehicleType) params.append("type", vehicleType);
@@ -47,7 +49,7 @@ function App() {
 
   const fetchLocations = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/locations');
+      const res = await axios.get(`${url}locations`);
       setLocations(res.data);
     } catch (err) {
       console.error("Failed to fetch locations:", err);

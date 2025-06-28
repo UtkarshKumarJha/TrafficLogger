@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 5000;
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://trafficlogger-1.onrender.com', 
+}));
 app.use(express.json());
 
 app.use('/api', router);
