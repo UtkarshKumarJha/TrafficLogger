@@ -16,4 +16,6 @@ const logSchema = new mongoose.Schema({
     }
 }, { collection: 'CarDetection' })
 
+logSchema.index({ vehicle_type: 1, timestamp: -1 });
+
 export const CarDetection = mongoose.model('CarDetection', logSchema);
