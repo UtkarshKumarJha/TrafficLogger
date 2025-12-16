@@ -46,7 +46,7 @@ function App() {
   const [timeData, setTimeData] = useState({ labels: [], datasets: [] });
   const [stackedData, setStackedData] = useState({ labels: [], datasets: [] });
 
-  const BASE_URL = "http://localhost:5000/api/";
+  const BASE_URL = "https://trafficlogger.onrender.com/api/";
 
   const fetchLogs = useCallback(async () => {
     setLoading(true);
